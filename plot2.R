@@ -1,8 +1,10 @@
+library(dplyr)
+
 #Read in power data from text file
-power <- read.table("C:\\Users\\Fujitsu\\Documents\\Kevy\\Exploratory Data Analysis\\Week 1\\household_power_consumption.txt", header = TRUE, na.strings = "?", sep = ";", stringsAsFactors = FALSE)
+power <- read.table("household_power_consumption.txt", header = TRUE, na.strings = "?", sep = ";", stringsAsFactors = FALSE)
 
 #Assign filename for .png output
-png(filename = "C:\\Users\\Fujitsu\\Documents\\Kevy\\Exploratory Data Analysis\\Week 1\\plot2.png")
+png(filename = "plot2.png")
 
 #Create date variable
 power$dateOnly <- as.Date(power$Date, format = "%d/%m/%Y")

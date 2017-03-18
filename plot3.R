@@ -1,14 +1,17 @@
+library(dplyr)
+library(reshape2)
+
 #Read in power data from text file
-power <- read.table("C:\\Users\\Fujitsu\\Documents\\Kevy\\Exploratory Data Analysis\\Week 1\\household_power_consumption.txt", header = TRUE, na.strings = "?", sep = ";", stringsAsFactors = FALSE)
+power <- read.table("household_power_consumption.txt", header = TRUE, na.strings = "?", sep = ";", stringsAsFactors = FALSE)
 
 #Assign filename for .png output
-png(filename = "C:\\Users\\Fujitsu\\Documents\\Kevy\\Exploratory Data Analysis\\Week 1\\plot3.png")
+png(filename = "plot3.png")
 
 #Create date variable
 power$dateOnly <- as.Date(power$Date, format = "%d/%m/%Y")
 
 #Filter data for 1st two days of February 2007
-power <- filter(power, (dateOnly == as.Date("2007-02-01") | dateOnly == as.Date("2007-02-02"))
+power <- filter(power, (dateOnly == as.Date("2007-02-01") | dateOnly == as.Date("2007-02-02")))
 
 #Create date/time variable from Date and Time variables in power                
 power$dateAndTime <- as.POSIXct(paste(power$Date, power$Time), format = "%d/%m/%Y %H:%M:%S")

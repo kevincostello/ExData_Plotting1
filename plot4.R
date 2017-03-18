@@ -2,10 +2,10 @@ library(dplyr)
 library(reshape2)
 
 #Read in power data from text file
-power <- read.table("C:\\Users\\Fujitsu\\Documents\\Kevy\\Exploratory Data Analysis\\Week 1\\household_power_consumption.txt", header = TRUE, na.strings = "?", sep = ";", stringsAsFactors = FALSE)
+power <- read.table("household_power_consumption.txt", header = TRUE, na.strings = "?", sep = ";", stringsAsFactors = FALSE)
 
 #Assign filename for .png output
-png(filename = "C:\\Users\\Fujitsu\\Documents\\Kevy\\Exploratory Data Analysis\\Week 1\\plot4.png")
+png(filename = "plot4.png")
 par(mfcol = c(2, 2))
 
 #Create date variable
@@ -21,10 +21,7 @@ power$dateAndTime <- as.POSIXct(paste(power$Date, power$Time), format = "%d/%m/%
 plot(power$dateAndTime, power$Global_active_power, type = "l", main = "", xlab = "", ylab = "")
 
 #Define title for plot
-title(ylab = "Global Active Power (kilowatts)")
-
-#Close plot output file
-#dev.off()
+title(ylab = "Global Active Power")
 
 #Re-structure data so that there is one row per sub metering measure
 powerMelt <- melt(power, measure.vars = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
